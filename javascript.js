@@ -1,5 +1,8 @@
 function onHover(ele){
     ele.classList.add("hov");
+    const brightVal = ele.style.color;
+    console.log(brightVal);
+    ele.style.cssText = `filter: brightness(100%)`;
 }
 
 function changeSize(){
@@ -26,6 +29,13 @@ function generateBoxes(pixCount){
             box.classList.add("box", `col${j+1}`);
             box.addEventListener("mouseover", () => {
                 box.classList.add("hov");
+                const brightVal = box.style.color;
+                
+                let op = (parseFloat(box.style.opacity)|| 0);
+                if(op > 1){
+                    op = 1;
+                }
+                box.style.cssText = `opacity: ${op + 0.1}`;
             });
             col.appendChild(box);
         }

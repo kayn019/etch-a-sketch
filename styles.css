@@ -1,5 +1,5 @@
 body {
-
+    background-color:cornsilk ;
 }
 
 .container {
@@ -14,7 +14,7 @@ body {
 
 .boxes {
     display: flex;
-    background-color: bisque;
+    background-color: white;
     width: 480px;
     height: 480px;
 }
@@ -28,12 +28,13 @@ body {
 }
 
 .box {
-    background-color: aliceblue;
+    background-color: white;
     border: 1px solid black;
     width:100%;
     height: 100%;
 }
 
 .box.hov{
-    background-color: darkblue;
+    background-color: black;
+    opacity: 0.1;
 }
