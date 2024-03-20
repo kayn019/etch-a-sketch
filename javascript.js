@@ -28,14 +28,22 @@ function generateBoxes(pixCount){
             const box = document.createElement('div');
             box.classList.add("box", `col${j+1}`);
             box.addEventListener("mouseover", () => {
-                box.classList.add("hov");
-                const brightVal = box.style.color;
-                
-                let op = (parseFloat(box.style.opacity)|| 0);
-                if(op > 1){
-                    op = 1;
+                if(isMouseDown){
+                    let strength = strSlider.value / 10;
+                    let color = colorPicker.value;
+                    box.classList.add("hov");
+             
+      
+                    
+                    let op = (parseFloat(box.style.opacity)|| 0);
+                    if(op > 1){
+                        op = 1;
+                    }
+                    
+                    box.style.cssText = `opacity: ${op + strength};
+                                         background-color: ${color};`;
                 }
-                box.style.cssText = `opacity: ${op + 0.1}`;
+               
             });
             col.appendChild(box);
         }
@@ -51,6 +59,17 @@ function deleteBoxes(){
 
 const boxes = document.querySelector('.boxes');
 const btnChange = document.querySelector('.btnChange');
+const strSlider = document.querySelector('.strSlider');
+const colorPicker = document.querySelector('.colorPicker');
+let isMouseDown = false;
+boxes.addEventListener("mousedown", function()
+{ 
+  isMouseDown = true;
+});
+boxes.addEventListener("mouseup", function()
+{
+  isMouseDown = false;
+});
 
 generateBoxes(16);
 
